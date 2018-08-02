@@ -9,11 +9,6 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server -d --progress --colors",
     "test": "mocha --require babel-register test/**/*.test.js",
-    "docs:dev": "next docs",
-    "docs:build": "cross-env NODE_ENV=production next build docs",
-    "docs:export": "next export docs -o docs/export",
-    "docs:deploy": "npm run docs:build && npm run docs:export && firebase deploy",
-    "docs:start": "next start docs",
     "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --require babel-register test/*.js && nyc report --reporter=html | cat coverage/lcov.info | coveralls",
     "coverage:html": "cross-env NODE_ENV=test nyc check-coverage --lines 55 --reporter=html --reporter=text mocha --require babel-register test/*.js && nyc report --reporter=html",
     "prettier": "find src/ docs/ test/ -type f -name \"*.js\" ! -path \"*/.next/*\" | xargs prettier --write",

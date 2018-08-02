@@ -50,8 +50,8 @@ class Example extends React.Component {
       onRowsSelect: (rowsSelected, allRows) => {
         console.log(rowsSelected, allRows);
       },
-      onRowsDelete: (rowsDeleted) => {
-        console.log(rowsDeleted, "were deleted!");
+      onRowsCopy: (rowsCopied) => {
+        console.log(rowsCopied, "were copied!");
       },
       onChangePage: (numberRows) => {
         console.log(numberRows);
@@ -67,6 +67,9 @@ class Example extends React.Component {
       },
       onFilterChange: (column, filters) => {
         console.log(column, filters);
+      },
+      hideTail: () => {
+        console.log("Hide tail");
       }
     };
 

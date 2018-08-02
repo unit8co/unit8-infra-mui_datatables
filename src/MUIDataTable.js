@@ -457,18 +457,16 @@ class MUIDataTable extends React.Component {
     );
   };
 
-  selectRowDelete = () => {
-    const cleanRows = this.state.data.filter((_, index) => this.state.selectedRows.indexOf(index) === -1);
-
-    if (this.options.onRowsDelete) {
-      this.options.onRowsDelete(this.state.selectedRows);
+  selectRowSelect = () => {
+    if (this.options.onRowsCopy) {
+      this.options.onRowsCopy(this.state.selectedRows);
     }
 
     this.updateToolbarSelect(false);
 
     this.setTableData({
       columns: this.props.columns,
-      data: cleanRows,
+      data: this.props.data,
       options: {
         filterList: this.state.filterList,
       },
@@ -583,7 +581,7 @@ class MUIDataTable extends React.Component {
           <MUIDataTableToolbarSelect
             options={this.options}
             selectedRows={selectedRows}
-            onRowsDelete={this.selectRowDelete}
+            onRowsSelect={this.selectRowSelect}
           />
         ) : (
           <MUIDataTableToolbar

@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import Paper from "material-ui/Paper";
 import IconButton from "material-ui/IconButton";
+import BookmarkBorderIcon from "material-ui-icons/BookmarkBorder";
 import Tooltip from "material-ui/Tooltip";
 import Typography from "material-ui/Typography";
-import DeleteIcon from "material-ui-icons/Delete";
 import { withStyles } from "material-ui/styles";
 
 const defaultToolbarSelectStyles = {
@@ -39,14 +39,14 @@ class MUIDataTableToolbarSelect extends React.Component {
     options: PropTypes.object.isRequired,
     /** Current row selected or not */
     rowSelected: PropTypes.bool,
-    /** Callback to trigger selected rows delete */
-    onRowsDelete: PropTypes.func,
+    /** Callback to trigger selected rows select */
+    onRowsSelect: PropTypes.func,
     /** Extend the style applied to components */
     classes: PropTypes.object,
   };
 
   render() {
-    const { classes, onRowsDelete, selectedRows } = this.props;
+    const { classes, onRowsSelect, selectedRows } = this.props;
 
     return (
       <Paper className={classes.root}>
@@ -55,9 +55,9 @@ class MUIDataTableToolbarSelect extends React.Component {
             {selectedRows.length} row(s) selected
           </Typography>
         </div>
-        <Tooltip title="Delete">
-          <IconButton className={classes.iconButton} onClick={onRowsDelete} aria-label="Delete Selected Rows">
-            <DeleteIcon className={classes.deleteIcon} />
+        <Tooltip title="Copy to clipboard">
+          <IconButton className={classes.iconButton} onClick={onRowsSelect} aria-label="Copy Selected Rows">
+            <BookmarkBorderIcon className={classes.deleteIcon} />
           </IconButton>
         </Tooltip>
       </Paper>

@@ -39,7 +39,7 @@ describe("<MUIDataTableToolbar />", function() {
   it("should render a toolbar", () => {
     const mountWrapper = mount(<MUIDataTableToolbar columns={columns} data={data} options={options} />);
     const actualResult = mountWrapper.find(IconButton);
-    assert.strictEqual(actualResult.length, 5);
+    assert.strictEqual(actualResult.length, 6);
   });
 
   it("should render a toolbar with no search icon if option.search = false", () => {

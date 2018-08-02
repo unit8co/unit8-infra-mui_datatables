@@ -9,6 +9,7 @@ import MUIDataTableViewCol from "./MUIDataTableViewCol";
 import MUIDataTableSearch from "./MUIDataTableSearch";
 import SearchIcon from "material-ui-icons/Search";
 import DownloadIcon from "material-ui-icons/FileDownload";
+import RestoreIcon from "material-ui-icons/Restore";
 import PrintIcon from "material-ui-icons/Print";
 import ViewColumnIcon from "material-ui-icons/ViewColumn";
 import FilterIcon from "material-ui-icons/FilterList";
@@ -168,6 +169,25 @@ class MUIDataTableToolbar extends React.Component {
               )}
             </div>
             <div className={toolbarStyles.actions}>
+              {this.props.options.shown ? (
+                <Tooltip title="Hide tail">
+                  <IconButton
+                    aria-label="Hide tail"
+                    classes={{ root: toolbarStyles.icon }}
+                    onClick={this.props.options.hideTail}>
+                    <FilterIcon />
+                  </IconButton>
+                </Tooltip>
+              ) : (
+                <Tooltip title="Show tail">
+                  <IconButton
+                    aria-label="Show tail"
+                    classes={{ root: toolbarStyles.icon }}
+                    onClick={this.props.options.showTail}>
+                    <RestoreIcon />
+                  </IconButton>
+                </Tooltip>
+              )}
               {options.search ? (
                 <Tooltip title="Search">
                   <IconButton
