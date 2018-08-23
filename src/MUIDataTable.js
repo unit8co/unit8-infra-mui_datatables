@@ -459,7 +459,7 @@ class MUIDataTable extends React.Component {
 
   selectRowSelect = () => {
     if (this.options.onRowsCopy) {
-      this.options.onRowsCopy(this.state.selectedRows);
+      this.options.onRowsCopy(this.state.data.filter((row, index) => this.state.selectedRows.indexOf(index) >= 0));
     }
 
     this.updateToolbarSelect(false);
