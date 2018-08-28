@@ -465,8 +465,8 @@ class MUIDataTable extends React.Component {
     this.updateToolbarSelect(false);
 
     this.setTableData({
-      columns: this.props.columns,
-      data: this.props.data,
+      data: this.state.data,
+      columns: this.state.columns.map(({ name, ...options }) => ({ name, options })),
       options: {
         filterList: this.state.filterList,
       },
