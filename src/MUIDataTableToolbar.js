@@ -94,21 +94,17 @@ class MUIDataTableToolbar extends React.Component {
     }
   }
 
-  handleCSVDownload = () => {
-    const { data, columns } = this.props;
-
-    const CSVHead = columns.reduce((soFar, column) => soFar + '"' + column.name + '",', "").slice(0, -1) + "\r\n";
-    const CSVBody = data.reduce((soFar, row) => soFar + '"' + row.join('","') + '"\r\n', []).trim();
-
-    let CSVLink = document.createElement("a");
-    CSVLink.href = "data:text/csv;charset=utf-8;base64," + window.btoa(CSVHead + CSVBody);
-    CSVLink.target = "_blank";
-    CSVLink.download = "myFile.csv";
-
-    document.body.appendChild(CSVLink);
-    CSVLink.click();
-
-    CSVLink.parentNode.removeChild(CSVLink);
+  handleDownload = () => {
+    // const { data, columns } = this.props;
+    // const CSVHead = columns.reduce((soFar, column) => soFar + '"' + column.name + '",', "").slice(0, -1) + "\r\n";
+    // const CSVBody = data.reduce((soFar, row) => soFar + '"' + row.join('","') + '"\r\n', []).trim();
+    // let CSVLink = document.createElement("a");
+    // CSVLink.href = "data:text/csv;charset=utf-8;base64," + window.btoa(CSVHead + CSVBody);
+    // CSVLink.target = "_blank";
+    // CSVLink.download = "myFile.csv";
+    // document.body.appendChild(CSVLink);
+    // CSVLink.click();
+    // CSVLink.parentNode.removeChild(CSVLink);
   };
 
   setActiveIcon = iconName => {
@@ -202,11 +198,8 @@ class MUIDataTableToolbar extends React.Component {
                 false
               )}
               {options.download ? (
-                <Tooltip title="Download CSV">
-                  <IconButton
-                    aria-label="Download CSV"
-                    classes={{ root: toolbarStyles.icon }}
-                    onClick={this.handleCSVDownload}>
+                <Tooltip title="Download">
+                  <IconButton aria-label="Download" classes={{ root: toolbarStyles.icon }} onClick={options.download}>
                     <DownloadIcon />
                   </IconButton>
                 </Tooltip>

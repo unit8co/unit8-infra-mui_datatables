@@ -22,7 +22,7 @@ describe("<MUIDataTableToolbar />", function() {
   before(() => {
     options = {
       print: true,
-      download: true,
+      download: () => {},
       search: true,
       filter: true,
       viewColumns: true,
@@ -119,17 +119,5 @@ describe("<MUIDataTableToolbar />", function() {
 
     const state = mountWrapper.state();
     assert.strictEqual(state.iconActive, "filter");
-  });
-
-  it("should download CSV when calling method handleCSVDownload", () => {
-    const mountWrapper = mount(<MUIDataTableToolbar columns={columns} data={data} options={options} />);
-    const instance = mountWrapper.instance();
-
-    const appendSpy = spy(document.body, "appendChild");
-    const removeSpy = spy(document.body, "removeChild");
-    instance.handleCSVDownload();
-
-    assert.strictEqual(appendSpy.callCount, 1);
-    assert.strictEqual(removeSpy.callCount, 1);
   });
 });

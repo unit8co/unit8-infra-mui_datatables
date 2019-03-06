@@ -138,7 +138,7 @@ class MUIDataTable extends React.Component {
       search: true,
       print: true,
       viewColumns: true,
-      download: true,
+      download: () => {},
     };
 
     this.options = { ...defaultOptions, ...props.options };
